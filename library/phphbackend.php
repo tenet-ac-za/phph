@@ -188,6 +188,7 @@ class PhphBackEnd {
 
         foreach ($rules as $rule) {
             if (preg_match('/check_framework\.xsl$/', $rule)) { continue; }
+            $xslt->setParameter('', 'expectedAuthority', g::$config['destinations'][$id]['publisher']);
             $xslt->importStylesheet(new SimpleXMLElement($rule, 0, true));
             $xslt->transformToDoc($xp->document);
         }
