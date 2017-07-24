@@ -6,14 +6,14 @@ static $oid2basic;
 static $basic2oid = array(
 	'schacHomeOrganization' => 'urn:oid:1.3.6.1.4.1.25178.1.2.9',
 	'schacPersonalUniqueCode' => 'urn:oid:1.3.6.1.4.1.25178.1.2.14',
-    'schacHomeOrganizationType' =>"urn:oid:1.3.6.1.4.1.25178.1.2.10",
-    'schacCountryOfCitizenship' => 'urn:oid:1.3.6.1.4.1.25178.1.2.5',
-    'schacYearOfBirth' => 'urn:oid:1.3.6.1.4.1.25178.1.0.2.3',
-    'schacDateOfBirth' => 'urn:oid:1.3.6.1.4.1.25178.1.2.3',
-    'schacPersonalUniqueID' => 'urn:oid:1.3.6.1.4.1.25178.1.2.15',
-    'employeeTypeMS' => 'urn:oid:1.2.840.113556.1.2.613',
-    'employeeID'     => 'urn:oid:1.2.840.113556.1.4.35',
-    'primaryGroupID' => 'urn:oid:1.3.6.1.4.1.7165.2.1.15',
+	'schacHomeOrganizationType' =>"urn:oid:1.3.6.1.4.1.25178.1.2.10",
+	'schacCountryOfCitizenship' => 'urn:oid:1.3.6.1.4.1.25178.1.2.5',
+	'schacYearOfBirth' => 'urn:oid:1.3.6.1.4.1.25178.1.0.2.3',
+	'schacDateOfBirth' => 'urn:oid:1.3.6.1.4.1.25178.1.2.3',
+	'schacPersonalUniqueID' => 'urn:oid:1.3.6.1.4.1.25178.1.2.15',
+	'employeeTypeMS' => 'urn:oid:1.2.840.113556.1.2.613',
+	'employeeID'     => 'urn:oid:1.2.840.113556.1.4.35',
+	'primaryGroupID' => 'urn:oid:1.3.6.1.4.1.7165.2.1.15',
 
 	'aRecord' => 'urn:oid:0.9.2342.19200300.100.1.26',
 	'aliasedEntryName' => 'urn:oid:2.5.4.1',
@@ -31,7 +31,7 @@ static $basic2oid = array(
 	'certificateRevocationList' => 'urn:oid:2.5.4.39',
 	'cn' => 'urn:oid:2.5.4.3',
 	'co' => 'urn:oid:0.9.2342.19200300.100.1.43',
-//	'commonName' => 'urn:oid:2.5.4.3',
+	'commonName' => 'urn:oid:2.5.4.3',
 	'countryName' => 'urn:oid:2.5.4.6',
 	'crossCertificatePair' => 'urn:oid:2.5.4.40',
 	'dITRedirect' => 'urn:oid:0.9.2342.19200300.100.1.54',
@@ -68,9 +68,10 @@ static $basic2oid = array(
 	'eduPersonPrincipalName' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.6',
 	'eduPersonScopedAffiliation' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.9',
 	'eduPersonTargetedID' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.10',
-    'eduPersonAssurance' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
-    'eduCourseOffering' => 'urn:oid:1.3.6.1.4.1.5923.1.6.1.1',
-    'eduCourseMember' => 'urn:oid:1.3.6.1.4.1.5923.1.6.1.2',
+	'eduPersonAssurance' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
+	'eduCourseOffering' => 'urn:oid:1.3.6.1.4.1.5923.1.6.1.1',
+	'eduCourseMember' => 'urn:oid:1.3.6.1.4.1.5923.1.6.1.2',
+	'eduPersonOrcid' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.16',
 	'email' => 'urn:oid:1.2.840.113549.1.9.1',
 	'emailAddress' => 'urn:oid:1.2.840.113549.1.9.1',
 	'employeeNumber' => 'urn:oid:2.16.840.1.113730.3.1.3',
@@ -82,7 +83,7 @@ static $basic2oid = array(
 	'federationFeideSchemaVersion' => 'urn:oid:1.3.6.1.4.1.2428.90.1.9',
 	'friendlyCountryName' => 'urn:oid:0.9.2342.19200300.100.1.43',
 	'generationQualifier' => 'urn:oid:2.5.4.44',
-//	'givenName' => 'urn:oid:2.5.4.42',
+	'givenName' => 'urn:oid:2.5.4.42',
 	'gn' => 'urn:oid:2.5.4.42',
 	'homePhone' => 'urn:oid:0.9.2342.19200300.100.1.20',
 	'homePostalAddress' => 'urn:oid:0.9.2342.19200300.100.1.39',
@@ -143,7 +144,7 @@ static $basic2oid = array(
 	'protocolInformation' => 'urn:oid:2.5.4.48',
 	'pseudonym' => 'urn:oid:2.5.4.65',
 	'registeredAddress' => 'urn:oid:2.5.4.26',
-	//'rfc822Mailbox' => 'urn:oid:0.9.2342.19200300.100.1.3',
+	'rfc822Mailbox' => 'urn:oid:0.9.2342.19200300.100.1.3',
 	'mail' => 'urn:oid:0.9.2342.19200300.100.1.3',
 	'roleOccupant' => 'urn:oid:2.5.4.33',
 	'roomNumber' => 'urn:oid:0.9.2342.19200300.100.1.6',
@@ -162,7 +163,7 @@ static $basic2oid = array(
 	'subtreeMinimumQuality' => 'urn:oid:0.9.2342.19200300.100.1.51',
 	'supportedAlgorithms' => 'urn:oid:2.5.4.52',
 	'supportedApplicationContext' => 'urn:oid:2.5.4.30',
-//	'surname' => 'urn:oid:2.5.4.4',
+	'surname' => 'urn:oid:2.5.4.4',
 	'telephoneNumber' => 'urn:oid:2.5.4.20',
 	'teletexTerminalIdentifier' => 'urn:oid:2.5.4.22',
 	'telexNumber' => 'urn:oid:2.5.4.21',
@@ -182,6 +183,16 @@ static $basic2oid = array(
 );
 }
 
-basic2oid::$oid2basic = array_flip(basic2oid::$basic2oid);
+/* try select the RFC4591/RFC2256 ones first */
+basic2oid::$oid2basic = array_flip(array_filter(basic2oid::$basic2oid, function($k) {
+	return !in_array($k, array(
+		'aliasedEntryName', 'commonName', 'countryName', 'domainComponent',
+		'email', 'favouriteDrink', 'fax', 'friendlyCountryName', 'gn',
+		'homeTelephoneNumber', 'localityName', 'mobileTelephoneNumber',
+		'organizationName', 'organizationalUnitName', 'pagerTelephoneNumber',
+		'pkcs9email', 'rfc822Mailbox', 'stateOrProvinceName', 'streetAddress',
+		'surname',
+	));
+}, ARRAY_FILTER_USE_KEY));
 
 ?>
