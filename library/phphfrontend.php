@@ -11,6 +11,16 @@ class phphfrontend {
             $_SESSION['SAML'] = $sporto->authenticate();
             $_SESSION['SAML']['AuthTime'] = time();
             if (isset($_SESSION['redirect'])) { header("Location: " . $_SESSION['redirect']); }
+            if (array_key_exists('attributes', $_SESSION['SAML'])) {
+                foreach ($_SESSION['SAML']['attributes'] as $k => $v) {
+                    if (strpos($k, 'urn:oid:') !== false and
+                        array_key_exists($k, basic2oid::$oid2basic) and
+                        !array_key_exists(basic2oid::$oid2basic[$k], $_SESSION['SAML']['attributes'])
+                    ) {
+                        $_SESSION['SAML']['attributes'][basic2oid::$oid2basic[$k]] = $v;
+                    }
+                }
+            }
         }
         if (!$users || empty($_SESSION['SAML']) || !in_array($_SESSION['SAML']['attributes']['eduPersonPrincipalName'][0], $users)) {
             $error = "Only authorized users are allowed to make changes.";
