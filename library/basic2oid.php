@@ -71,6 +71,7 @@ static $basic2oid = array(
 	'eduPersonAssurance' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.11',
 	'eduCourseOffering' => 'urn:oid:1.3.6.1.4.1.5923.1.6.1.1',
 	'eduCourseMember' => 'urn:oid:1.3.6.1.4.1.5923.1.6.1.2',
+	'eduPersonUniqueId' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.13',
 	'eduPersonOrcid' => 'urn:oid:1.3.6.1.4.1.5923.1.1.1.16',
 	'email' => 'urn:oid:1.2.840.113549.1.9.1',
 	'emailAddress' => 'urn:oid:1.2.840.113549.1.9.1',
