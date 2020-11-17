@@ -114,19 +114,9 @@ class g {
 
     static function duration2secs($duration)
     {
-        // primitive and imprecise ISO 8601 duration parser - a year is 365 days, a month is 30 days.
-        // PHP ignores the designator at the end of each part so we can multiply without fear
-        // PnW and P<date>T<time> are not supported
-        // The \b at the end is to make sure that we always get an entry for secs in $d
-        $durationinsecs = 0;
-        $secs = array(0, 365 * 86400, 30 * 86400, 86400, 3600, 60, 1);
-        if (preg_match('/^P(\d+Y)?(\d+M)?(\d+D)?T?(\d+H)?(\d+M)?(\d+S)?(\b)?$/', $duration, $d)) {
-            foreach ($secs as $i => $s) {
-                $durationinsecs += $s * $d[$i];
-            }
-            return $durationinsecs;
-        } else {
-            exit("Unsupported duration: '$duration'");
-        }
-    }
+         $durationinsecs = new DateTime('@0');
+	 $durationinsecs->add(new DateInterval($duration));
+	 return $durationinsecs->format('U');
+  }
+
 }
