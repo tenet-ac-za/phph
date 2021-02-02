@@ -216,7 +216,7 @@ class phphfrontend {
         //$xxxRankSame = join(' ', array_map(function($id) { return "\"z-$id\""; }, $xxxRankSame));
         //print_r($viz);
 
-        print self::render('viz', compact('viz', 'params', 'srcRankSame', 'dstRankSame', 'finalRankSame', 'helpers'));
+        print self::render('viz', @compact('viz', 'params', 'srcRankSame', 'dstRankSame', 'finalRankSame', 'helpers'));
     }
 
     static function raw__() {
@@ -341,12 +341,12 @@ class phphfrontend {
 
     static function superview__() {
         $superview = self::superviewinfo();
-        print self::render('superview', compact('superview'));
+        print self::render('superview', @compact('superview'));
     }
 
     static function mecview__() {
         $superview = self::superviewinfo();
-        print self::render('mecview', compact('superview'));
+        print self::render('mecview', @compact('superview'));
     }
 
     static function mdfileview__() {
@@ -364,7 +364,7 @@ class phphfrontend {
         //print "<pre>";    print_r($summary); print "</pre>";
         //print "<pre>";    print_r(json_decode($json, 1)); print "</pre>";
         $buttons = json_encode(g::$config['buttons']);
-        print self::render('overview', compact('buttons', 'fed', 'type', 'filename', 'phpfilename'));
+        print self::render('overview', @compact('buttons', 'fed', 'type', 'filename', 'phpfilename'));
     }
 
     static function overviewjs__($path) {
@@ -408,12 +408,12 @@ class phphfrontend {
         $json = json_encode($feeds, JSON_PRETTY_PRINT);
         //print "<pre>"; print $json; print "</pre>"; exit;
         header("Content-type: application/json");
-        print self::render('overviewjs', compact('json'), false);
+        print self::render('overviewjs', @compact('json'), false);
     }
 
     static function overview__($path) {
         $buttons = json_encode(g::$config['buttons']);
-        print self::render('overview', compact('buttons'));
+        print self::render('overview', @compact('buttons'));
     }
 
     static function debug__($path)
@@ -433,7 +433,7 @@ class phphfrontend {
         $entity = $xp->query($xpath)->item(0);
         $summary = PhphBackEnd::summary($xp, $entity, $fed, $type, true);
 
-        $formvalues = compact('entityID', 'fed', 'type');
+        $formvalues = @compact('entityID', 'fed', 'type');
         $formvalues['role'] = $summary['SP'] ? 'SP' : 'IDP';
         $key = uniqid();
         $_SESSION['formvalues'][$key] = $formvalues;
@@ -555,7 +555,7 @@ class phphfrontend {
         $summary['metadataerrors'] = sizeof($metadata_errors);
         $schema_errors = array_map(function($a) { return $a->message; }, $schema_errors);
 
-        print self::render('show', compact('show', 'ats', 'summary', 'key', 'xtraats', 'approvable', 'unapprovable',
+        print self::render('show', @compact('show', 'ats', 'summary', 'key', 'xtraats', 'approvable', 'unapprovable',
              'metadata_errors', 'schema_errors', 'logentries', 'xxx', 'res'));
 
     }
@@ -920,7 +920,7 @@ class phphfrontend {
         $content = ob_get_contents(); // Get the content of the buffer
         ob_end_clean(); // End buffering and discard
         if ($super) {
-            return self::render(array_shift($super), compact('content', 'debug'), $super); # array_shift shifts one element from super ...
+            return self::render(array_shift($super), @compact('content', 'debug'), $super); # array_shift shifts one element from super ...
         }
         return $content; // Return the content
     }
