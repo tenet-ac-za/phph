@@ -70,6 +70,8 @@
     <!--
         Check for Location attributes that aren't valid URLs.
     -->
+    <!--
+        Breaks PHP's XSL parser :-(
     <xsl:template match="md:*[@Location and mdxURL:invalidURL(@Location)]">
         <xsl:call-template name="error">
             <xsl:with-param name="m">
@@ -79,11 +81,13 @@
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
+    -->
 
 
     <!--
         Check for ResponseLocation attributes that aren't valid URLs.
     -->
+   <!--
     <xsl:template match="md:*[@ResponseLocation and mdxURL:invalidURL(@ResponseLocation)]">
         <xsl:call-template name="error">
             <xsl:with-param name="m">
@@ -93,6 +97,7 @@
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
+    -->
 
 
     <!--
