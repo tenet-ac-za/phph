@@ -416,11 +416,6 @@ class phphfrontend {
         print self::render('overview', @compact('buttons'));
     }
 
-    static function debug__($path)
-    {
-        show__($path);
-    }
-
     static function show__($path) {
         //print "<pre>"; print_r($_POST); print "</pre>";
         //print "<pre>"; print_r(self::form2hierachial($_POST)); print "</pre>";
@@ -920,7 +915,7 @@ class phphfrontend {
         $content = ob_get_contents(); // Get the content of the buffer
         ob_end_clean(); // End buffering and discard
         if ($super) {
-            return self::render(array_shift($super), @compact('content', 'debug'), $super); # array_shift shifts one element from super ...
+            return self::render(array_shift($super), @compact('content'), $super); # array_shift shifts one element from super ...
         }
         return $content; // Return the content
     }
