@@ -52,6 +52,14 @@ class sporto
                 $scoping = '<samlp:Scoping><samlp:IDPList>'.$scoping . '</samlp:IDPList></samlp:Scoping>';
             }
 
+            // Add multifactor auth request
+            $accr = '';
+            if (isset($this->config['accr'])) {
+                $accr = '<samlp:RequestedAuthnContext><saml:AuthnContextClassRef xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">';
+                $accr .= $this->config['accr'];
+                $accr .= '</saml:AuthnContextClassRef></samlp:RequestedAuthnContext>';
+            }
+
             // Construct request
             $request = <<<EOS
 <?xml version="1.0"?>
@@ -65,6 +73,7 @@ class sporto
     xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
     <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">$sp</saml:Issuer>
     $scoping
+    $accr
 </samlp:AuthnRequest>
 EOS;
 
@@ -142,6 +151,20 @@ EOS;
         $authStatement_SessionNotOnOrAfter = $xp->query('./saml:AuthStatement/@SessionNotOnOrAfter', $assertion);
         if ($authStatement_SessionNotOnOrAfter->length && $aShortWhileAgo >= $authStatement_SessionNotOnOrAfter->item(0)->value) {
             $issues[] = 'AuthnStatement Session too old';
+        }
+
+        if (isset($this->config['accr'])) {
+            $authnContextClassRefs = $xp->query('./saml:AuthnStatement/saml:AuthnContext/saml:AuthnContextClassRef', $assertion);
+            $found_authnContextClassRef = false;
+            foreach ($authnContextClassRefs as $accr) {
+                if ($accr->textContent == $this->config['accr']) {
+                    $found_authnContextClassRef = true;
+                    break;
+                }
+            }
+            if (! $found_authnContextClassRef) {
+                $issues[] = 'AuthnContextClassRef does not match request';
+            }
         }
 
         if (!empty($issues)) {
