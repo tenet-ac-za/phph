@@ -85,7 +85,7 @@ eos;
         } else {
             $pkey_res = openssl_pkey_get_private($privatekey, $pw);
             openssl_sign($data, $signaturevalue, $pkey_res, $signatureMethod);
-            //unset($pkey_res);
+            unset($pkey_res);
         }
         return $signaturevalue;
     }
