@@ -183,6 +183,7 @@ static $basic2oid = array(
 	'userid' => 'urn:oid:0.9.2342.19200300.100.1.1',
 	'x121Address' => 'urn:oid:2.5.4.24',
 	'x500UniqueIdentifier' => 'urn:oid:2.5.4.45',
+	/* not strictly "oid", but needed to handle modern SAML subject identifiers */
 	'subject-id' => 'urn:oasis:names:tc:SAML:attribute:subject-id',
 	'pairwise-id' => 'urn:oasis:names:tc:SAML:attribute:pairwise-id',
 );
