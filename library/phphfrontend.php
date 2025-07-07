@@ -515,6 +515,58 @@ class phphfrontend {
             }
         }
 
+        /* TENET - handle the new subject-id attributes */
+        $subjectIdReq = $xp->query(
+            'md:Extensions/mdattr:EntityAttributes/saml:Attribute[@Name="urn:oasis:names:tc:SAML:profiles:subject-id:req"]/saml:AttributeValue[1]',
+            $entity,
+        );
+        if ($subjectIdReq->length) {
+            $addToReq = [];
+            switch ($subjectIdReq->item(0)->nodeValue) {
+                case 'subject-id':
+                    $requested['subject-id'] = [
+                        'Name' => basic2oid::$basic2oid['subject-id'],
+                        'NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
+                        'FriendlyName' => 'subject-id',
+                        'isRequired' => true,
+                    ];
+                    $required['subject-id'] = $requested['subject-id'];
+                    break;
+
+                case 'pairwise-id':
+                    $requested['pairwise-id'] = [
+                        'Name' => basic2oid::$basic2oid['pairwise-id'],
+                        'NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
+                        'FriendlyName' => 'pairwise-id',
+                        'isRequired' => true,
+                    ];
+                    $required['pairwise-id'] = $requested['pairwise-id'];
+                    break;
+
+                case 'any':
+                    $requested['subject-id'] = [
+                        'Name' => basic2oid::$basic2oid['subject-id'],
+                        'NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
+                        'FriendlyName' => 'subject-id',
+                    ];
+                    unset($required['subject-id']);
+                    $requested['pairwise-id'] = [
+                        'Name' => basic2oid::$basic2oid['pairwise-id'],
+                        'NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
+                        'FriendlyName' => 'pairwise-id',
+                    ];
+                    unset($required['pairwise-id']);
+                    break;
+
+                case 'none':
+                    unset($requested['subject-id']);
+                    unset($required['subject-id']);
+                    unset($requested['pairwise-id']);
+                    unset($required['pairwise-id']);
+                    break;
+            }
+        }
+
         foreach(g::$config['attributesupport']['attributes'] as $basic) {
             $at['friendlyName'] = $basic;
             $at['oid'] = basic2oid::$basic2oid[$basic];
