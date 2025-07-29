@@ -63,7 +63,9 @@
     <xsl:template match="mdattr:EntityAttributes/saml:Attribute
         [@Name != 'http://macedir.org/entity-category']
         [@Name != 'http://macedir.org/entity-category-support']
+        [@Name != 'https://refeds.org/entity-selection-profile']
         [@Name != 'urn:oasis:names:tc:SAML:attribute:assurance-certification']
+        [@Name != 'urn:oasis:names:tc:SAML:profiles:subject-id:req']
         [not(starts-with(@Name, 'urn:x-safire.ac.za'))]
         ">
         <xsl:call-template name="error">
